@@ -1,0 +1,43 @@
+# Virtual environment
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Editor configuration files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Environment files
+.env
+.venv
+
+# Local database files
+*.sqlite3
+*.db
+
+# Compiled Python files
+*.pyc
+
+# Local test coverage files
+htmlcov/
+.tox/
+.nox/
+
+# Test reports
+coverage.xml
+coverage/
+.cache
+pytest_cache/
+junit-xml/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
