@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.endpoints import root
+from app.api.endpoints import users
 
 app = FastAPI()
 
@@ -11,6 +13,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello World!"}
+app.include_router(root.router)
+app.include_router(users.router, prefix="/users")
