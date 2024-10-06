@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.endpoints import root
 from app.api.endpoints import users
+from app.api.endpoints import marketplaces
 
 app = FastAPI()
 
@@ -15,3 +16,4 @@ app.add_middleware(
 
 app.include_router(root.router)
 app.include_router(users.router, prefix="/users")
+app.include_router(marketplaces.router, prefix="/marketplaces")

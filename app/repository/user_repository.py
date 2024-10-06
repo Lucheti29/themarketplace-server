@@ -15,11 +15,11 @@ class UserRepository:
     def __init__(self):
         self.supabase_url = os.getenv("SUPABASE_URL")
         self.supabase_key = os.getenv("SUPABASE_KEY")
-        self.supabase: Client = create_client(self.supabase_url, self.supabase_key)
+        self.client: Client = create_client(self.supabase_url, self.supabase_key)
 
     def login_user(self, email: str, password: str):
         try:
-            response = self.supabase.auth.sign_in_with_password(
+            response = self.client.auth.sign_in_with_password(
                 {"email": email, "password": password}
             )
             
@@ -33,6 +33,7 @@ class UserRepository:
 
     def get_user(self, jwt: str):
         try:
-            return self.supabase.auth.get_user(jwt)
+            response = self.client.auth.get_user(jwt)
+            return response.user.id
         except Exception as e:
             raise AuthenticationError(str(e))
